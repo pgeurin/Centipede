@@ -1,0 +1,95 @@
+Centipede Game Outline
+
+Player
+    - moves up, down, left, right
+    - can move anywhere
+    - loses life
+        - touches centipede
+        - spider hits it
+        - every life restarts game
+    - moves through mushrooms
+    - unlimited shots
+    - player movement follows mouse movement
+    - mouse clicks fire shots
+
+Centipedes
+    - starts at top right
+    - moves horizontally
+    - moves down a level and switches direction
+        - if hits a mushroom
+        - if hits a wall
+    - centipede stops before player area moving back and forth
+    - struck twice
+        - section/segment of centipede will die
+        - centipede will break into two parts (possibly in different directions)
+    - if all parts of centipede die, new centipede will start at top
+    - "Each segment of the centipede follows the segment in front
+       of it, i.e., at each time t, a segment s following a segment
+       s+1 will occupy the position that segment s+1 occupied at time t-1."
+
+Mushroom
+    - if hit 3 times by player, dies
+    - nothing happens if hit by centipede
+    - placing
+        - place mushrooms from top to bottom
+        - likelihood
+            - intake from file or input a percent
+            - two ways
+                - get number and multiply it by number of spaces, then input into random number generator, put mushrooms in corresponding places
+                - for each place generate random number (1-100), if above input: keep
+        - locations by random #, leave if doesn't block off above mushrooms
+        - not along a wall
+    - if player dies, mushrooms hit <3 times are fully restored
+
+Spider
+    - moves erratically
+    - dies if shot 2 times by player
+    - new player life also generates new spider life
+
+Layout
+    - area where centipede and mushrooms can be (top section)
+    - player area
+        - last few rows
+        - "safe space" for player
+
+
+Scoring
+    - score board shown somewhere on screen
+    - shows # of lives, and # of points
+        - player hits centipede: 2 points
+        - player kills centipede segment: 5 points
+        - hits mushroom: 1 point
+        - kills mushroom: 5 points
+        - for each mushroom revived: 10 points
+        - hits spider: 100 points
+        - kills spider: 600 points
+        - completely killing off a centipede: 600 points
+
+------------------------------------------------------------------------------------------------------------------------
+
+Grading
+    - Game terminates normally: 7.5 points
+    - Displaying lives and the score: 7.5 points
+    - Mushrooms 20 points total
+        - 5 points for placing automatically, 0 points if a pre-defined layout is used
+        - 5 points for not dying on the first or second hit, but adding to the score
+        - 5 points for dying on the third hit
+        - 5 points for restoring
+    - Spider 15 points total
+        - 5 points for moving
+        - 5 points for not dying on the first hit, but adding to the score
+        - 5 points for dying on the second hit, and scoring points
+    - Centipede 25 points total
+        - 5 points for moving down when hitting a wall
+        - 5 points for moving down when hitting a mushrooms
+        - 5 points for moving correctly when a segment is killed
+        - 5 points for proper scoring when segments are hit
+        - 5 points for going back and forth and not going down further when it enters the top of the player
+          area.
+    - The player 25 points total
+        - 5 points for movement
+        - 5 points for shooting
+        - 5 points for a sound when shooting.
+        - 5 points for dying if hit by the centipede
+        - 5 points for dying if hit by the spider
+

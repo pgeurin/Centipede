@@ -1,0 +1,74 @@
+Layout Object
+    - map of Game Objects
+    - size
+
+Player Object
+    - # of lives
+    - position
+    - follow() //mouse reader and follow it function
+    - getGraphics()
+    - shoot() //a mouse click calls this function, activates beam object
+
+Game Objects
+    - update()
+    - getGraphics()
+
+Mushroom Object
+    - # of lives
+    - location
+
+Beam Object
+    - location
+
+Score Object
+    - points
+    - lives
+
+Spider Object
+    - location
+    - # of lives
+
+Centipede Object
+    - head (pointer to another centipede object)
+    - body
+    - head logic
+
+[C]->[C]->[C]->[C]
+                ^-head
+
+In the layout object: you can have a list of all [C] objects,
+regardless of where they are or who they connect to. At each tick, the
+object will go to its head's location if there is one, or if there isn't
+it will do "head logic (move down/sideways)"
+
+Tick := frame of the game
+fps := # of frames per second
+       common: 30,60,72,96,144Hz
+
+while(true){
+  runGameLogic();
+  time.wait(1s/fps); // simple delay
+}
+
+Games have one main map, at each tick, every element in the map gets
+updated. Read between the lines: Every element needs an update function.
+  -> starting to see inheritance (GameObject <abstract>)
+  -> at every tick, every object in the map needs to either move or not
+    - update() function can return new coordinates
+    - eg: a mushroom's update function is basically empty
+          - it can update their lives (if they get hit by a beam)
+      eg: the centipede's update will have to return its head's coords
+          if it's a head element, it has to do some thinking
+
+  -> start constructing the objects with that notion in mind:
+     -> one BIG map
+     -> many SIMILAR gameobjects
+
+
+
+  ---------------------------------------------------------------------
+   - linked list centipede object
+      - map<> mushrooms
+      - rows
+      - columns
+      - spider

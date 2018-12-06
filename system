@@ -1,0 +1,9 @@
+Game: game controller, main loop
+    Map - holds all gameobjects except player
+        - At the start of every tick, every item in map runs move()
+        - Needs a "getItemAt" method (which will be used to check for collisions)
+        - Needs a "setItemPos" method (which will move the object within the map)
+        - after each tick, update() commits the move
+
+When player dies:
+  buncha stuff needs to happen (see whiteboard/outline)
